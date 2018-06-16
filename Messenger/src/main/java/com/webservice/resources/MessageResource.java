@@ -8,6 +8,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,5 +43,13 @@ public class MessageResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void addMessage(Message msg) {
 		 msgService.addMessage(msg);
+	}
+	
+	@GET
+	@Path("/filter")
+	@Produces(MediaType.TEXT_PLAIN)
+	public String paginationTest(@QueryParam("mon") String month,
+								@QueryParam("year") String yr) {
+		 return "Month: "+month+", Year: "+yr;
 	}
 }
