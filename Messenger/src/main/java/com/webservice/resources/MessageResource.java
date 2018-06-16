@@ -9,7 +9,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.UriInfo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -52,4 +54,14 @@ public class MessageResource {
 								@QueryParam("year") String yr) {
 		 return "Month: "+month+", Year: "+yr;
 	}
+	
+	@GET
+	@Path("/context")
+	@Produces(MediaType.TEXT_PLAIN)
+	public String contextTest(@Context UriInfo uriInfo) {
+		 String uri = uriInfo.getAbsolutePath().toString();
+		 
+		 return "Path is: "+uri;
+	}
+	
 }
