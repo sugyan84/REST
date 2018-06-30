@@ -40,6 +40,7 @@ public class MessageResource {
 		return msgService.getMessage(id);
 	}
 	
+
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -62,6 +63,16 @@ public class MessageResource {
 		 String uri = uriInfo.getAbsolutePath().toString();
 		 
 		 return "Path is: "+uri;
+	}	
+	
+
+	@Path("{msgId}/comments")
+	public CommentResource getMessageWithComments() {
+		return new CommentResource();
 	}
 	
+	@Path("{msgId}/comments/testHello")
+	public String getMessageWithCommentsTest() {
+		return "Hello";
+	}
 }

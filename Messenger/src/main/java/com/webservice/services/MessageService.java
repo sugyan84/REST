@@ -4,15 +4,20 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.webservice.modal.Message;
 
-@Component
+@Service
 public class MessageService {
 	
 	static Map<Integer, Message> map = new HashMap<>();
 	static int highestId=0;
+	
+	public MessageService()
+	{
+		
+	}
 	
 	static
 	{
